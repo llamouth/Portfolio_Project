@@ -5,7 +5,14 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        python: {
+          yellow: '#FFD43B', // Official Python yellow
+          blue: '#306998',   // Official Python blue
+        },
+      },
+    },
   },
   plugins: [],
 }
