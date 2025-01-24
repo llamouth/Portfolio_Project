@@ -1,11 +1,10 @@
-import project1 from "../assets/projects/project-1.jpg";
-import project2 from "../assets/projects/project-2.jpg";
-import project3 from "../assets/projects/project-3.jpg";
-import project4 from "../assets/projects/project-4.jpg";
+import budgetYaSelfImage from '../assets/projects/Budgetyaselflogo.png'
+import yumStepperImage from '../assets/projects/Yumstepperlogo.png'
 
-export const HERO_CONTENT = `I am a passionate full stack developer with a knack for crafting robust and scalable web applications. With 5 years of hands-on experience, I have honed my skills in front-end technologies like React and Next.js, as well as back-end technologies like Node.js, MySQL, PostgreSQL, and MongoDB. My goal is to leverage my expertise to create innovative solutions that drive business growth and deliver exceptional user experiences.`;
+export const HERO_CONTENT = `Hello! I'm a dedicated full stack developer with a flair for creating web applications that are not only functional but also enjoyable to navigate. My journey has involved extensive work with front-end technologies such as React, React Native, and Next.js, alongside back-end frameworks like Node.js and Express, using PostgreSQL as my database of choice. My goal is to blend creativity with technical know-how to develop innovative solutions that truly make an impact—be it advancing business objectives or elevating user experiences. Let’s collaborate to build something exceptional together!`;
 
-export const ABOUT_TEXT = `I am a dedicated and versatile full stack developer with a passion for creating efficient and user-friendly web applications. With 5 years of professional experience, I have worked with a variety of technologies, including React, Next.js, Node.js, MySQL, PostgreSQL, and MongoDB. My journey in web development began with a deep curiosity for how things work, and it has evolved into a career where I continuously strive to learn and adapt to new challenges. I thrive in collaborative environments and enjoy solving complex problems to deliver high-quality solutions. Outside of coding, I enjoy staying active, exploring new technologies, and contributing to open-source projects.`;
+export const ABOUT_TEXT = `As a dynamic and enthusiastic full stack developer, I take pride in crafting efficient, user-centric web applications. My path in tech was ignited by a deep curiosity about how things function, leading me to an immersive boot camp that transformed that curiosity into a genuine passion for web development. I thrive in collaborative settings, love tackling intricate challenges, and am committed to delivering top-notch solutions. When I'm not immersed in code, you can find me making music, delving into emerging technologies, or exploring new destinations.`;
+
 
 export const EXPERIENCES = [,
   {
@@ -34,29 +33,29 @@ export const EXPERIENCES = [,
 
 export const PROJECTS = [
   {
-    title: "E-Commerce Website",
-    image: project1,
+    title: "YumStepper",
+    image: yumStepperImage, // Replace with the appropriate image variable or path
     description:
-      "A fully functional e-commerce website with features like product listing, shopping cart, and user authentication.",
-    technologies: ["HTML", "CSS", "React", "Node.js", "MongoDB"],
-  },
+      "YumStepper is a fitness and rewards mobile app that motivates users to stay active by tracking steps and earning points redeemable for restaurant discounts. The app features real-time geolocation, dynamic maps, and a rewards system to promote healthy habits and enhance user engagement.",
+    technologies: ["React Native (Expo)", "Node.js", "Express", "PostgreSQL"],
+  }
+  ,
   {
-    title: "Task Management App",
-    image: project2,
-    description:
-      "An application for managing tasks and projects, with features such as task creation, assignment, and progress tracking.",
-    technologies: ["HTML", "CSS", "Angular", "Firebase"],
+    title: "BudgetYaself",
+    image: budgetYaSelfImage, 
+    description:"BudgetYaself is a smart budgeting application designed to help users track their expenses, manage finances, and make informed decisions. Leveraging AI-powered insights, it offers personalized strategies to optimize your budget and achieve financial goals seamlessly.",
+    technologies: ["React", "Node.js", "SCSS", "PostgreSQL", "Bootstrap", "Express"],
   },
   {
     title: "Portfolio Website",
-    image: project3,
+    // image: project3,
     description:
       "A personal portfolio website showcasing projects, skills, and contact information.",
-    technologies: ["HTML", "CSS", "React", "Bootstrap"],
+    technologies: ["HTML", "SCSS", "React", "Bootstrap"],
   },
   {
     title: "Blogging Platform",
-    image: project4,
+    // image: project4,
     description:
       "A platform for creating and publishing blog posts, with features like rich text editing, commenting, and user profiles.",
     technologies: ["HTML", "CSS", "Vue.js", "Express", "mySQL"],
