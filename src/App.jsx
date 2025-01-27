@@ -1,6 +1,5 @@
 import About from "./Components/About"
 import Contacts from "./Components/Contacts"
-import Experience from "./Components/Experience"
 import Hero from "./Components/Hero"
 import Navbar from "./Components/Navbar"
 import Projects from "./Components/Projects"
