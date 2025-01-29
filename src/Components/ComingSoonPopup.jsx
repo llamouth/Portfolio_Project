@@ -1,12 +1,12 @@
 import React from 'react'
-import { FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa'
+import { PROJECTS_SOON } from '../constants'
 import { motion, AnimatePresence } from 'motion/react'
 
-const ContactPopUp = ({ onClose }) => {
+const ComingSoonPopup = ({ onClose }) => {
     return (
         <AnimatePresence>
             <div className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-50'>
-            <motion.div 
+                <motion.div 
                     initial={{ opacity: 0, scale: 0.8 }} 
                     animate={{ opacity: 1, scale: 1 }} 
                     exit={{ opacity: 0, scale: 0.8 }} 
@@ -19,17 +19,14 @@ const ContactPopUp = ({ onClose }) => {
                     >
                         ✕
                     </button>
-                    <h2 className='text-2xl font-bold mb-6'>Get in Touch</h2>
-                    <div className='mt-6 flex items-center justify-center gap-6 text-2xl'>
-                        <a href="https://www.linkedin.com/in/larryalamouth/" target="_blank" rel="noopener noreferrer" className='hover:text-blue-600'>
-                            <FaLinkedin />
-                        </a>
-                        <a href="https://github.com/llamouth" target="_blank" rel="noopener noreferrer" className='hover:text-gray-800'>
-                            <FaGithub />
-                        </a>
-                        <a href="mailto:llamouth@pursuit.org" target="_blank" rel="noopener noreferrer" className='hover:text-red-600'>
-                            <FaEnvelope />
-                        </a>
+                    <h2 className='text-2xl font-bold mb-6'>Coming Soon</h2>
+                    <div className='mt-6'>
+                        {PROJECTS_SOON.map((project, idx) => (
+                            <div key={idx} className='mb-4'>
+                                <h6 className='mb-2 font-semibold'>{project.title}</h6>
+                                <p className='text-neutral-400'>{project.description}</p>
+                            </div>
+                        ))}
                     </div>
                 </motion.div>
             </div>
@@ -37,4 +34,4 @@ const ContactPopUp = ({ onClose }) => {
     )
 }
 
-export default ContactPopUp
+export default ComingSoonPopup

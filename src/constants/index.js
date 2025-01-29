@@ -62,6 +62,21 @@ export const PROJECTS = [
   // },
 ];
 
+export const PROJECTS_SOON = [
+  {
+    title: "Fine-Ace",
+    description: "Fine-Ace is an intelligent finance management application designed to streamline budgeting, expense tracking, and financial planning with AI-driven insights. Built with Next.js and enhanced by Radix UI components, Tailwind CSS, and modern React tools, Fine-Ace offers a seamless and responsive user experience. Users can securely manage their financial data, receive smart recommendations, and make informed financial decisions—all in one sleek and efficient platform."
+  },
+  {
+    title: "Portfolio Website",
+    description: "A personal portfolio website showcasing projects, skills, and contact information."
+  },
+  {
+    title: "Blogging Platform",
+    description: "A platform for creating and publishing blog posts, with features like rich text editing and commenting."
+  }
+];
+
 export const CONTACT = {
   github: "https://github.com/llamouth?tab=repositories",
   linkedin: "https://www.linkedin.com/in/larryalamouth/",
