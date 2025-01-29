@@ -39,27 +39,27 @@ export const PROJECTS = [
       "YumStepper is a fitness and rewards mobile app that motivates users to stay active by tracking steps and earning points redeemable for restaurant discounts. The app features real-time geolocation, dynamic maps, and a rewards system to promote healthy habits and enhance user engagement.",
     technologies: ["React Native (Expo)", "Node.js", "Express", "PostgreSQL"],
   }
-  ,
-  {
-    title: "BudgetYaself",
-    image: budgetYaSelfImage, 
-    description:"BudgetYaself is a smart budgeting application designed to help users track their expenses, manage finances, and make informed decisions. Leveraging AI-powered insights, it offers personalized strategies to optimize your budget and achieve financial goals seamlessly.",
-    technologies: ["React", "Node.js", "SCSS", "PostgreSQL", "Bootstrap", "Express"],
-  },
-  {
-    title: "Portfolio Website",
-    // image: project3,
-    description:
-      "A personal portfolio website showcasing projects, skills, and contact information.",
-    technologies: ["HTML", "SCSS", "React", "Bootstrap"],
-  },
-  {
-    title: "Blogging Platform",
-    // image: project4,
-    description:
-      "A platform for creating and publishing blog posts, with features like rich text editing, commenting, and user profiles.",
-    technologies: ["HTML", "CSS", "Vue.js", "Express", "mySQL"],
-  },
+  // ,
+  // {
+  //   title: "BudgetYaself",
+  //   image: budgetYaSelfImage, 
+  //   description:"BudgetYaself is a smart budgeting application designed to help users track their expenses, manage finances, and make informed decisions. Leveraging AI-powered insights, it offers personalized strategies to optimize your budget and achieve financial goals seamlessly.",
+  //   technologies: ["React", "Node.js", "SCSS", "PostgreSQL", "Bootstrap", "Express"],
+  // },
+  // {
+  //   title: "Portfolio Website",
+  //   // image: project3,
+  //   description:
+  //     "A personal portfolio website showcasing projects, skills, and contact information.",
+  //   technologies: ["HTML", "SCSS", "React", "Bootstrap"],
+  // },
+  // {
+  //   title: "Blogging Platform",
+  //   // image: project4,
+  //   description:
+  //     "A platform for creating and publishing blog posts, with features like rich text editing, commenting, and user profiles.",
+  //   technologies: ["HTML", "CSS", "Vue.js", "Express", "mySQL"],
+  // },
 ];
 
 export const CONTACT = {

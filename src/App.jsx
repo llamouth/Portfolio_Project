@@ -1,5 +1,5 @@
 import About from "./Components/About"
-import Contacts from "./Components/Contacts"
+import ScrollToTop from "./Components/ScrollToTop"
 import Hero from "./Components/Hero"
 import Navbar from "./Components/Navbar"
 import Projects from "./Components/Projects"
@@ -20,7 +20,7 @@ function App() {
         <Technologies />
         <Projects />
         {/* <Experience /> */}
-        <Contacts />
+        <ScrollToTop />
       </div>
     </div>
   )
