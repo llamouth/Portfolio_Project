@@ -6,6 +6,7 @@ import Navbar from "./Components/Navbar"
 import Projects from "./Components/Projects"
 import Technologies from "./Components/Technologies"
 import ComingSoonPopup from "./Components/ComingSoonPopup"
+import ChatBot from './Components/ChatBot'
 
 function App() {
   const [isComingSoonOpen, setIsComingSoonOpen] = useState(false);
@@ -24,6 +25,7 @@ function App() {
         <Projects onMoreComingSoonClick={() => setIsComingSoonOpen(true)} />
         {/* <Experience /> */}
         <ScrollToTop />
+        {/* <ChatBot/> */}
       </div>
 
       {isComingSoonOpen && <ComingSoonPopup onClose={() => setIsComingSoonOpen(false)} />}
