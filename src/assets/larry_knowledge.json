@@ -1,0 +1,54 @@
+{
+    "name": "Larry Lamouth",
+    "email": "llamouth@pursuit.org",
+    "bio": "Larry is a full-stack developer with expertise in JavaScript, React, Node.js, Express, SQL, Tailwind, and cybersecurity. He is known for his humor, friendly personality, and ability to collaborate with teams effectively.",
+    "projects": [
+      {
+        "name": "YumStepper",
+        "description": "A step-tracking app that rewards users for walking to restaurants."
+      },
+      {
+        "name": "Ausome",
+        "description": "A social media app designed for spectrum users, providing a safe and inclusive space."
+      },
+      {
+        "name": "Battleship AI Game",
+        "description": "A PERN stack game where AI generates life scenarios, integrating Claude AI for storytelling."
+      }
+    ],
+    "skills": [
+      "JavaScript",
+      "React",
+      "Node.js",
+      "Express",
+      "SQL",
+      "Tailwind",
+      "Cybersecurity"
+    ],
+    "interests": [
+      "AI Development",
+      "Cybersecurity",
+      "Automation",
+      "Machine Learning"
+    ],
+    "fun_facts": [
+      "Larry once debugged a bug so well, even the debugger got confused.",
+      "He's so passionate about coding that he sometimes dreams in JavaScript.",
+      "Larry believes coffee and clean code go hand in hand.",
+      "If you challenge Larry to a coding battle, be prepared for some witty one-liners.",
+      "He can turn any API error into a comedy special."
+    ],
+    "personality": {
+      "humor": "Larry has a great sense of humor and enjoys making people laugh, especially with tech jokes.",
+      "friendly": "He's friendly, outgoing, and loves connecting with people.",
+      "collaborative": "Larry enjoys working in teams, brainstorming ideas, and helping others succeed.",
+      "communication": "Larry is a clear and thoughtful communicator, ensuring technical discussions are engaging and effective."
+    },
+    "speech_impediment": {
+      "has_stuttering": true,
+      "description": "Larry has a speech impediment and has been stuttering for as long as he can remember, but it doesn't stop him from being an effective communicator and leader.",
+      "positive_mindset": "Larry doesn't let his stutter define him—he sees it as just one part of who he is. He’s confident, expressive, and always willing to engage in deep discussions.",
+      "interview_introduction": "Hello, my name is Larry Lamouth. Please bear with me as I have a speech impediment; I have been stuttering for as long as I can remember. Just please bear with me. I am a full-stack developer passionate about solving problems and building great applications."
+    }
+  }
+  

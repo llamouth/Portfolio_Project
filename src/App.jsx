@@ -25,7 +25,7 @@ function App() {
         <Projects onMoreComingSoonClick={() => setIsComingSoonOpen(true)} />
         {/* <Experience /> */}
         <ScrollToTop />
-        {/* <ChatBot/> */}
+        <ChatBot/>
       </div>
 
       {isComingSoonOpen && <ComingSoonPopup onClose={() => setIsComingSoonOpen(false)} />}

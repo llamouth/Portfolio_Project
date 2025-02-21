@@ -38,7 +38,7 @@ const Contacts = () => {
       {showButton && (
         <button 
           onClick={scrollToTop} 
-          className='fixed bottom-10 right-10 p-3 border-2 border-neutral-800 text-neutral-800 rounded-full shadow-lg hover:bg-neutral-800 hover:text-white'
+          className='fixed bottom-10 right-10 p-3 border-2 border-neutral-800 text-neutral-800 rounded-full shadow-lg hover:bg-neutral-800 hover:text-white transition-all'
         >
           ↑ Contact 
         </button>

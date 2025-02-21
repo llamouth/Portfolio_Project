@@ -66,6 +66,10 @@ export const PROJECTS_SOON = [
   {
     title: "Fine-Ace",
     description: "Fine-Ace is an intelligent finance management application designed to streamline budgeting, expense tracking, and financial planning with AI-driven insights. Built with Next.js and enhanced by Radix UI components, Tailwind CSS, and modern React tools, Fine-Ace offers a seamless and responsive user experience. Users can securely manage their financial data, receive smart recommendations, and make informed financial decisions—all in one sleek and efficient platform."
+  },
+  {
+    title: "Ausome",
+    description: "Ausome is an inclusive social platform designed to foster meaningful connections and support for individuals on the autism spectrum. Built with modern web technologies, including Next.js, Tailwind CSS, and Radix UI, Ausome provides a safe and engaging space where users can share experiences, access resources, and interact with a supportive community. With a focus on accessibility, intuitive design, and personalized features, Ausome empowers users to express themselves, build relationships, and thrive in a digital space tailored to their unique needs."
   }
 ];
 
