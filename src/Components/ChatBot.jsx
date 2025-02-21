@@ -48,6 +48,7 @@ const Chatbot = () => {
       const data = await response.json();
       
       setShowTyping(false); 
+      console.log(data)
 
       if (!data.choices || !data.choices[0]?.message?.content) {
         throw new Error("No valid response from AI");
