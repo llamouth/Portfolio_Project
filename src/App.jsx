@@ -1,15 +1,24 @@
-import React, { useState } from 'react'
-import About from "./Components/About"
-import ScrollToTop from "./Components/ScrollToTop"
-import Hero from "./Components/Hero"
-import Navbar from "./Components/Navbar"
-import Projects from "./Components/Projects"
-import Technologies from "./Components/Technologies"
-import ComingSoonPopup from "./Components/ComingSoonPopup"
-import ChatBot from './Components/ChatBot'
+import React, { useState, useEffect } from "react";
+import About from "./Components/About";
+import ScrollToTop from "./Components/ScrollToTop";
+import Hero from "./Components/Hero";
+import Navbar from "./Components/Navbar";
+import Projects from "./Components/Projects";
+import Technologies from "./Components/Technologies";
+import ComingSoonPopup from "./Components/ComingSoonPopup";
+import ChatBot from "./Components/ChatBot";
 
 function App() {
   const [isComingSoonOpen, setIsComingSoonOpen] = useState(false);
+  const [isChatBotOpen, setIsChatBotOpen] = useState(false);
+
+  useEffect(() => {
+    if (isChatBotOpen) {
+      document.body.classList.add("no-scroll");
+    } else {
+      document.body.classList.remove("no-scroll");
+    }
+  }, [isChatBotOpen]);
 
   return (
     <div className="overflow-x-hidden text-neutral-300 antialiased selection:bg-cyan-300 selection:text-cyan-900">
@@ -25,12 +34,17 @@ function App() {
         <Projects onMoreComingSoonClick={() => setIsComingSoonOpen(true)} />
         {/* <Experience /> */}
         <ScrollToTop />
-        <ChatBot/>
+        <ChatBot
+          onOpen={() => setIsChatBotOpen(true)}
+          onClose={() => setIsChatBotOpen(false)}
+        />
       </div>
 
-      {isComingSoonOpen && <ComingSoonPopup onClose={() => setIsComingSoonOpen(false)} />}
+      {isComingSoonOpen && (
+        <ComingSoonPopup onClose={() => setIsComingSoonOpen(false)} />
+      )}
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

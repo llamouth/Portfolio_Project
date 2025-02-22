@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { FaPaperPlane, FaRobot, FaUser, FaTimes } from "react-icons/fa";
-import { motion } from "motion/react"; // ✅ Correct import
+import { motion } from "motion/react"; 
 import knowledge from "../assets/larry_knowledge.json";
-import useEnterSubmit from "../Hooks/useEnterSubmit"; // ✅ Enter to send
+import useEnterSubmit from "../Hooks/useEnterSubmit"; 
 
 const baseURL = "https://api.aimlapi.com/v1";
 const apiKey = import.meta.env.VITE_AI_API_KEY;
 
-const Chatbot = () => {
+const Chatbot = ({ onOpen, onClose }) => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -18,17 +18,20 @@ const Chatbot = () => {
     if (!input.trim()) return;
 
     const userMessage = { role: "user", content: input };
-    setMessages([...messages, userMessage]); // ✅ Show user message immediately
-    setInput(""); 
-    setShowTyping(true); 
+    setMessages([...messages, userMessage]); 
+    setInput("");
+    setShowTyping(true);
 
     const systemKnowledge = {
       role: "system",
       content: `You are an AI assistant with knowledge about Larry Lamouth. 
-      Use this to answer briefly and engagingly: ${JSON.stringify(knowledge)}`,
+      Use this to answer briefly (3-4 sentences) and engagingly: ${JSON.stringify(knowledge)}`,
     };
 
-    const newMessages = [{ role: "system", content: systemKnowledge.content }, userMessage];
+    const newMessages = [
+      { role: "system", content: systemKnowledge.content },
+      userMessage,
+    ];
 
     try {
       const response = await fetch(`${baseURL}/chat/completions`, {
@@ -41,14 +44,13 @@ const Chatbot = () => {
           model: "mistralai/Mistral-7B-Instruct-v0.2",
           messages: newMessages,
           temperature: 0.7,
-          max_tokens: 256,
+          max_tokens: 200,
         }),
       });
 
       const data = await response.json();
-      
-      setShowTyping(false); 
-      console.log(data)
+
+      setShowTyping(false);
 
       if (!data.choices || !data.choices[0]?.message?.content) {
         throw new Error("No valid response from AI");
@@ -59,22 +61,33 @@ const Chatbot = () => {
         content: data.choices[0].message.content.trim(),
       };
 
-      setMessages((prev) => [...prev, botMessage]); 
+      setMessages((prev) => [...prev, botMessage]);
     } catch (error) {
       console.error("Error fetching chatbot response:", error);
+    } finally {
       setShowTyping(false);
     }
 
     setLoading(false);
   };
 
-  const handleKeyPress = useEnterSubmit(handleSendMessage); 
+  const handleKeyPress = useEnterSubmit(handleSendMessage);
+
+  const handleOpen = () => {
+    setIsOpen(true);
+    onOpen();
+  };
+
+  const handleClose = () => {
+    setIsOpen(false);
+    onClose();
+  };
 
   return (
     <div>
       {!isOpen && (
         <motion.button
-          onClick={() => setIsOpen(true)}
+          onClick={handleOpen}
           className="fixed bottom-10 left-10 z-50 p-4 border-2 border-neutral-800 text-neutral-800 rounded-full shadow-lg hover:bg-neutral-800 hover:text-white transition-all hover:scale-110"
         >
           Chat with my assistant
@@ -83,12 +96,13 @@ const Chatbot = () => {
 
       {isOpen && (
         <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50 backdrop-blur-lg transition-opacity">
-          <div className="relative w-[90%] max-w-2xl bg-gray-900 shadow-2xl rounded-xl overflow-hidden border border-neutral-700">
-
+          <div className="relative w-[90%] max-w-2xl bg-gray-900 shadow-2xl rounded-xl overflow-hidden border border-neutral-500">
             {/* Header */}
-            <div className="bg-neutral-800 text-white py-3 px-4 flex justify-between items-center">
-              <span className="font-semibold text-lg">Larry's AI Assistant</span>
-              <button onClick={() => setIsOpen(false)} className="text-white text-xl">
+            <div className="bg-neutral-800 text-white py-3 px-4 flex justify-between items-center border-neutral-500">
+              <span className="font-semibold text-lg">
+                Larry's AI Assistant
+              </span>
+              <button onClick={handleClose} className="text-white text-xl hover:cursor-pointer">
                 <FaTimes />
               </button>
             </div>
@@ -98,19 +112,27 @@ const Chatbot = () => {
               {/* Background Effect */}
               <div className="absolute inset-0 z-[-1] bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%, rgba(120,119,198,0.3), rgba(255,255,255,0))]"></div>
               {messages.map((msg, index) => (
-                <motion.div 
-                  key={index} 
-                  initial={{ opacity: 0, y: 10 }} 
-                  animate={{ opacity: 1, y: 0 }} 
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3 }}
-                  className={`flex items-start ${msg.role === "user" ? "justify-end" : "justify-start"}`}
+                  className={`flex items-start ${
+                    msg.role === "user" ? "justify-end" : "justify-start"
+                  }`}
                 >
-                  <div className={`relative max-w-[90%] px-4 py-2 rounded-lg shadow-md break-words ${
-                    msg.role === "user"
-                      ? "bg-neutral-700 text-white rounded-br-none"
-                      : "bg-neutral-800 text-white rounded-bl-none"
-                  }`}>
-                    {msg.role === "user" ? <FaUser className="absolute -top-5 right-2 text-gray-300" /> : <FaRobot className="absolute -top-5 left-2 text-gray-300" />}
+                  <div
+                    className={`relative max-w-[90%] px-4 py-2 rounded-lg shadow-md break-words ${
+                      msg.role === "user"
+                        ? "bg-neutral-700 text-white rounded-br-none"
+                        : "bg-neutral-800 text-white rounded-bl-none"
+                    }`}
+                  >
+                    {msg.role === "user" ? (
+                      <FaUser className="absolute -top-5 right-2 text-gray-300" />
+                    ) : (
+                      <FaRobot className="absolute -top-5 left-2 text-gray-300" />
+                    )}
                     <p className="text-sm whitespace-pre-line">{msg.content}</p>
                   </div>
                 </motion.div>
@@ -118,10 +140,14 @@ const Chatbot = () => {
 
               {/* Typing Indicator (3 Animated Dots) */}
               {showTyping && (
-                <motion.div 
-                  initial={{ opacity: 0 }} 
-                  animate={{ opacity: 1 }} 
-                  transition={{ duration: 0.5, repeat: Infinity, repeatType: "mirror" }}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{
+                    duration: 0.5,
+                    repeat: Infinity,
+                    repeatType: "mirror",
+                  }}
                   className="flex items-center space-x-2 ml-2"
                 >
                   <div className="w-2 h-2 bg-white rounded-full animate-bounce"></div>
@@ -132,7 +158,7 @@ const Chatbot = () => {
             </div>
 
             {/* Input Box */}
-            <div className="flex items-center p-3 bg-neutral-800 border-t border-gray-700">
+            <div className="flex items-center p-3 bg-neutral-800 border-t border-neutral-500">
               <input
                 type="text"
                 className="flex-1 p-3 border-none bg-neutral-900 bg-opacity-60 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-neutral-500"
