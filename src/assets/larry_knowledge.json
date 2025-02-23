@@ -10,10 +10,6 @@
       {
         "name": "Ausome",
         "description": "A social media app designed for spectrum users, providing a safe and inclusive space."
-      },
-      {
-        "name": "Battleship AI Game",
-        "description": "A PERN stack game where AI generates life scenarios, integrating Claude AI for storytelling."
       }
     ],
     "skills": [
