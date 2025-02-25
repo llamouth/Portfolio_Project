@@ -38,6 +38,7 @@ export const PROJECTS = [
     description:
       "YumStepper is a fitness and rewards mobile app that motivates users to stay active by tracking steps and earning points redeemable for restaurant discounts. The app features real-time geolocation, dynamic maps, and a rewards system to promote healthy habits and enhance user engagement.",
     technologies: ["React Native (Expo)", "Node.js", "Express", "PostgreSQL"],
+    link: 'https://drive.google.com/file/d/1llDDPEy1XcT_YQ3qhBTqYvBQQgUMOY65/view'
   }
   // ,
   // {

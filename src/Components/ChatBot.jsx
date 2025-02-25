@@ -90,7 +90,8 @@ const Chatbot = ({ onOpen, onClose }) => {
           onClick={handleOpen}
           className="fixed bottom-10 left-10 z-50 p-4 border-2 border-neutral-800 text-neutral-800 rounded-full shadow-lg hover:bg-neutral-800 hover:text-white transition-all hover:scale-110"
         >
-          Chat with my assistant
+          <FaRobot className=" text-2xl " />
+
         </motion.button>
       )}
 
