@@ -73,6 +73,20 @@ const Projects = ({ onMoreComingSoonClick, theme }) => {
                 ))}
             </div>
 
+            {/* <motion.h1
+                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 100 }}
+                transition={{ duration: 0.5 }}
+                animate={{ 
+                    color: ["#1A1A26", "#fff"], 
+                    textShadow: ["none", "0 0 10px #232234"],
+                }}
+                className="relative w-full xl:text-7xl md:text-6xl text-4xl sm:tracking-[17px] tracking-[10px] uppercase text-center leading-[0.70em] outline-none box-reflect my-20  hover:cursor-pointer transition-colors duration-500"
+                onClick={onMoreComingSoonClick}
+            >
+                More Coming Soon..
+            </motion.h1> */}
+
             {/* More Coming Soon */}
             <motion.div 
                 whileInView={{ opacity: 1, y: 0 }}
