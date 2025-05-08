@@ -5,7 +5,7 @@ import knowledge from "../assets/larry_knowledge.json";
 import useEnterSubmit from "../Hooks/useEnterSubmit";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
-const apiKey = import.meta.env.VITE_GOOGLE_API_KEY; // Ensure your API key is in your environment variables
+const apiKey = import.meta.env.VITE_GOOGLE_API_KEY; 
 
 const Chatbot = ({ onOpen, onClose }) => {
   const [messages, setMessages] = useState([]);
@@ -14,7 +14,7 @@ const Chatbot = ({ onOpen, onClose }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [showTyping, setShowTyping] = useState(false);
   const [genAI, setGenAI] = useState(null);
-  const modelName = "gemini-1.5-flash"; // Or "gemini-pro-vision"
+  const modelName = "gemini-1.5-flash"; 
 
   useEffect(() => {
     if (apiKey) {
