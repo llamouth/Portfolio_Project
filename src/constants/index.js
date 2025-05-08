@@ -1,4 +1,4 @@
-import budgetYaSelfImage from '../assets/projects/Budgetyaselflogo.png'
+import EntiraryImage from '../assets/projects/Entirary.png'
 import yumStepperImage from '../assets/projects/Yumstepperlogo.png'
 
 export const HERO_CONTENT = `Hello! I'm a dedicated full stack developer with a flair for creating web applications that are not only functional but also enjoyable to navigate. My journey has involved extensive work with front-end technologies such as React, React Native, and Next.js, alongside back-end frameworks like Node.js and Express, using PostgreSQL as my database of choice. My goal is to blend creativity with technical know-how to develop innovative solutions that truly make an impact—be it advancing business objectives or elevating user experiences. Let’s collaborate to build something exceptional together!`;
@@ -34,43 +34,32 @@ export const EXPERIENCES = [,
 export const PROJECTS = [
   {
     title: "YumStepper",
-    image: yumStepperImage, // Replace with the appropriate image variable or path
+    image: yumStepperImage,
     description:
       "YumStepper is a fitness and rewards mobile app that motivates users to stay active by tracking steps and earning points redeemable for restaurant discounts. The app features real-time geolocation, dynamic maps, and a rewards system to promote healthy habits and enhance user engagement.",
     technologies: ["React Native (Expo)", "Node.js", "Express", "PostgreSQL"],
     link: 'https://drive.google.com/file/d/1llDDPEy1XcT_YQ3qhBTqYvBQQgUMOY65/view'
+  },
+  {
+    title: "Entirary",
+    image: EntiraryImage,
+    description: "Entirary is a personalized travel recommendation platform that leverages Retrieval-Augmented Generation (RAG) to understand your unique travel preferences and match you with destinations offering precise similarities. Discover your perfect getaway with tailored suggestions and rich destination information.",
+    technologies: [
+      "React.js",
+      "Node.js",
+      "Express",
+      "PostgreSQL",
+      "Google Gemini (via @google/generative-ai)",
+      "pgvector (PostgreSQL Extension)"
+    ],
+    link: "https://entirary.netlify.app/"
   }
-  // ,
-  // {
-  //   title: "BudgetYaself",
-  //   image: budgetYaSelfImage, 
-  //   description:"BudgetYaself is a smart budgeting application designed to help users track their expenses, manage finances, and make informed decisions. Leveraging AI-powered insights, it offers personalized strategies to optimize your budget and achieve financial goals seamlessly.",
-  //   technologies: ["React", "Node.js", "SCSS", "PostgreSQL", "Bootstrap", "Express"],
-  // },
-  // {
-  //   title: "Portfolio Website",
-  //   // image: project3,
-  //   description:
-  //     "A personal portfolio website showcasing projects, skills, and contact information.",
-  //   technologies: ["HTML", "SCSS", "React", "Bootstrap"],
-  // },
-  // {
-  //   title: "Blogging Platform",
-  //   // image: project4,
-  //   description:
-  //     "A platform for creating and publishing blog posts, with features like rich text editing, commenting, and user profiles.",
-  //   technologies: ["HTML", "CSS", "Vue.js", "Express", "mySQL"],
-  // },
 ];
 
 export const PROJECTS_SOON = [
   {
     title: "Ausome",
     description: "Ausome is an inclusive social platform designed to foster meaningful connections and support for individuals on the autism spectrum. Built with modern web technologies, including Next.js, Tailwind CSS, and Radix UI, Ausome provides a safe and engaging space where users can share experiences, access resources, and interact with a supportive community. With a focus on accessibility, intuitive design, and personalized features, Ausome empowers users to express themselves, build relationships, and thrive in a digital space tailored to their unique needs."
-  },
-  {
-    title: "Fine-Ace",
-    description: "Fine-Ace is an intelligent finance management application designed to streamline budgeting, expense tracking, and financial planning with AI-driven insights. Built with Next.js and enhanced by Radix UI components, Tailwind CSS, and modern React tools, Fine-Ace offers a seamless and responsive user experience. Users can securely manage their financial data, receive smart recommendations, and make informed financial decisions—all in one sleek and efficient platform."
   }
 ];
 

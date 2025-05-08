@@ -57,35 +57,20 @@ const Projects = ({ onMoreComingSoonClick, theme }) => {
                             </p>
 
                             {/* Technologies */}
-                            {project.technologies.map((tech, idx) => (
-                                <span 
-                                    key={idx} 
-                                    className={`mr-2 mt-4 rounded px-2 py-1 text-sm font-medium transition-colors duration-500 
-                                        ${theme === "dark" 
-                                            ? "bg-neutral-900 text-purple-400" 
-                                            : "bg-gray-200 text-purple-800"}`}
-                                >
+                            <div className="flex flex-wrap mt-4 gap-2">
+                                {project.technologies.map((tech, idx) => (
+                                    <span
+                                        key={idx}
+                                        className={`rounded px-2 py-1 text-sm font-medium transition-colors duration-500 ${theme === "dark" ? "bg-neutral-900 text-purple-400" : "bg-gray-200 text-purple-800"}`}
+                                    >
                                     {tech}
-                                </span>
-                            ))}
+                                    </span>
+                                ))}
+                            </div>
                         </motion.div>
                     </div>
                 ))}
             </div>
-
-            {/* <motion.h1
-                whileInView={{ opacity: 1, y: 0 }}
-                initial={{ opacity: 0, y: 100 }}
-                transition={{ duration: 0.5 }}
-                animate={{ 
-                    color: ["#1A1A26", "#fff"], 
-                    textShadow: ["none", "0 0 10px #232234"],
-                }}
-                className="relative w-full xl:text-7xl md:text-6xl text-4xl sm:tracking-[17px] tracking-[10px] uppercase text-center leading-[0.70em] outline-none box-reflect my-20  hover:cursor-pointer transition-colors duration-500"
-                onClick={onMoreComingSoonClick}
-            >
-                More Coming Soon..
-            </motion.h1> */}
 
             {/* More Coming Soon */}
             <motion.div 
