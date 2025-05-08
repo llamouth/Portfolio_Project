@@ -10,6 +10,10 @@
       {
         "name": "Ausome",
         "description": "A social media app designed for spectrum users, providing a safe and inclusive space."
+      },
+      {
+        "name": "Entirary",
+        "description": "A Travel Recommendation platform based on user preferences using RAG"
       }
     ],
     "skills": [

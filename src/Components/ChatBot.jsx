@@ -1,11 +1,11 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { FaPaperPlane, FaRobot, FaUser, FaTimes } from "react-icons/fa";
-import { motion, AnimatePresence } from "motion/react"; // ✅ Correct import
+import { motion, AnimatePresence } from "motion/react";
 import knowledge from "../assets/larry_knowledge.json";
 import useEnterSubmit from "../Hooks/useEnterSubmit";
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
-const baseURL = import.meta.env.VITE_AI_API_URL;
-const apiKey = import.meta.env.VITE_AI_API_KEY;
+const apiKey = import.meta.env.VITE_GOOGLE_API_KEY; // Ensure your API key is in your environment variables
 
 const Chatbot = ({ onOpen, onClose }) => {
   const [messages, setMessages] = useState([]);
@@ -13,57 +13,56 @@ const Chatbot = ({ onOpen, onClose }) => {
   const [loading, setLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [showTyping, setShowTyping] = useState(false);
+  const [genAI, setGenAI] = useState(null);
+  const modelName = "gemini-1.5-flash"; // Or "gemini-pro-vision"
+
+  useEffect(() => {
+    if (apiKey) {
+      setGenAI(new GoogleGenerativeAI(apiKey));
+    } else {
+      console.error("GOOGLE_API_KEY is not set in environment variables.");
+    }
+  }, [apiKey]);
 
   const handleSendMessage = async () => {
-    if (!input.trim()) return;
+    if (!input.trim() || !genAI) return;
 
     const userMessage = { role: "user", content: input };
-    setMessages([...messages, userMessage]); 
+    setMessages([...messages, userMessage]);
     setInput("");
     setShowTyping(true);
 
-    const systemKnowledge = {
-      role: "system",
-      content: `You are an AI assistant with knowledge about Larry Lamouth. 
-      Use this to answer briefly **3-4 sentences 5 sentences MAX** and engagingly: ${JSON.stringify(knowledge)}`,
-    };
+    const systemKnowledge = `You are an AI assistant with knowledge about Larry Lamouth. Use this to answer briefly **3-4 sentences 5 sentences MAX** and engagingly: ${JSON.stringify(knowledge)}`;
 
-    const newMessages = [
-      { role: "system", content: systemKnowledge.content },
-      userMessage,
-    ];
+    const chat = genAI.getGenerativeModel({ model: modelName }).startChat({
+      history: messages.map(msg => ({
+        role: msg.role === "user" ? "user" : "model",
+        parts: [{ text: msg.content }],
+      })),
+      generationConfig: {
+        temperature: 0.7,
+        maxOutputTokens: 200,
+      },
+    });
 
     try {
-      const response = await fetch(`${baseURL}/chat/completions`, {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${apiKey}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          model: "mistralai/Mistral-7B-Instruct-v0.2",
-          messages: newMessages,
-          temperature: 0.7,
-          max_tokens: 200,
-        }),
-      });
+      const result = await chat.sendMessage(systemKnowledge + "\n\n" + input);
+      const response = await result.response;
 
       setShowTyping(false);
 
-      const data = await response.json();
-
-      if (!data.choices || !data.choices[0]?.message?.content) {
-        throw new Error("No valid response from AI");
+      if (!response?.candidates || response.candidates.length === 0 || !response.candidates[0]?.content?.parts || response.candidates[0].content.parts.length === 0) {
+        throw new Error("No valid response from Gemini");
       }
 
       const botMessage = {
         role: "assistant",
-        content: data.choices[0].message.content.trim(),
+        content: response.candidates[0].content.parts[0].text.trim(),
       };
 
       setMessages((prev) => [...prev, botMessage]);
     } catch (error) {
-      console.error("Error fetching chatbot response:", error);
+      console.error("Error fetching Gemini response:", error);
     } finally {
       setShowTyping(false);
     }
@@ -75,7 +74,7 @@ const Chatbot = ({ onOpen, onClose }) => {
 
   const handleOpen = useCallback(() => {
     setIsOpen(true);
-    onOpen?.(); 
+    onOpen?.();
   }, [onOpen]);
 
   const handleClose = useCallback(() => {
@@ -91,7 +90,6 @@ const Chatbot = ({ onOpen, onClose }) => {
           className="fixed bottom-10 left-10 z-50 p-4 border-2 border-neutral-800 text-neutral-800 rounded-full shadow-lg hover:bg-neutral-800 hover:text-white transition-all hover:scale-110"
         >
           <FaRobot className=" text-2xl " />
-
         </motion.button>
       )}
 
@@ -118,7 +116,7 @@ const Chatbot = ({ onOpen, onClose }) => {
               </div>
 
               {/* Messages */}
-              <div className="relative h-96 overflow-y-auto p-4 pt-7 space-y-3 bg-neutral-900 rounded-lg bg-opacity-90">
+              <div className="relative h-96 overflow-y-auto p-4 pt-7 space-y-3 bg-neutral-900 rounded-lg bg-opacity-90 ">
                 {messages.map((msg, index) => (
                   <motion.div
                     key={index}
@@ -134,7 +132,7 @@ const Chatbot = ({ onOpen, onClose }) => {
                         msg.role === "user"
                           ? "bg-neutral-700 text-white rounded-br-none"
                           : "bg-neutral-800 text-white rounded-bl-none"
-                      }`}
+                      } mb-4` }
                     >
                       {msg.role === "user" ? (
                         <FaUser className="absolute -top-5 right-2 text-gray-300" />
@@ -146,7 +144,7 @@ const Chatbot = ({ onOpen, onClose }) => {
                   </motion.div>
                 ))}
 
-                {/* Typing Indicator (3 Animated Dots) */}
+                {/* Typing Indicator */}
                 {showTyping && (
                   <motion.div
                     initial={{ opacity: 0 }}

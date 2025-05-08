@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.24.1",
     "emailjs-com": "^3.2.0",
     "motion": "^12.4.7",
     "openai": "^4.85.3",
